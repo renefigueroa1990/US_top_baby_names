@@ -1,4 +1,8 @@
-#Determine the trending names in the within a given year range
+# import pandas as pd 
+# import matplotlib as plt 
+from utilities import *
 
-import pandas as pd 
-import matplotlib as plt 
+#First task is to modify the files in the 'names' folder
+convert_text_to_csv()
+
+#Determine the trending names in the within a given year range
