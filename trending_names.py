@@ -63,18 +63,58 @@ def get_top_names_for_year(year):
 	return top_names
 	
 
-def get_plot_trending_male_names(year):
+def get_year_plot_trending_male_names(year):
 	fig = plt.figure()
 	ax = fig.add_axes([0.1, 0.1, 0.75, 0.75])
 	male = get_male_names(year)
-	female = get_female_names(year)
-	ax.plot(male.Name[0:5], male.Count[0:5],'go-', linestyle='dashed', label='2017')
-	ax.legend(('rene'),loc = 'lower left')
-	ax.set_xlabel('Name')
+	ax.plot(male.Name[0:5], male.Count[0:5],'go-', linestyle='dashed', label=str(year))
+	ax.set_xlabel('Baby Name')
 	ax.set_ylabel('Number of name occurrences')
-	ax.set_title('Top male baby names for year 2017')
-	ax.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
-
+	ax.set_title('Top male baby names for {}'.format(year))
+	ax.legend()
 	plt.show()
 	return plt
+
+def get_year_plot_trending_female_names(year):
+	fig = plt.figure()
+	ax = fig.add_axes([0.1, 0.1, 0.75, 0.75])
+	female = get_female_names(year)
+	ax.plot(female.Name[0:5], female.Count[0:5],'go-', linestyle='dashed', label=str(year))
+	ax.set_xlabel('Baby Name')
+	ax.set_ylabel('Number of name occurrences')
+	ax.set_title('Top female baby names for {}'.format(year))
+	ax.legend()
+	plt.show()
+	return plt
+
+def get_plot_trending_name_for_years(years):
+	''' Takes a list of years as arguments and returns a plot with the trending names over the years specified in the list'''
+	fig_M = plt.figure()
+	ax = fig_M.add_axes([0.1, 0.1, 0.75, 0.75])
+	fig_F = plt.figure()
+	ax2 = fig_F.add_axes([0.1, 0.1, 0.75, 0.75])
+	for year in years:
+	  	#get male and female data
+		male = get_male_names(year)
+		female = get_female_names(year)
+		ax.plot(male.Name[0:5], male.Count[0:5],'o', label=str(year))
+		
+
+		ax2.plot(female.Name[0:5], female.Count[0:5],'o', label=str(year))
+		
+
+		
+	ax.set_xlabel('Baby Name')
+	ax.set_ylabel('Number of name occurrences')
+	ax.set_title('Top male baby names')
+	ax2.set_xlabel('Baby Name')
+	ax2.set_ylabel('Number of name occurrences')
+	ax2.set_title('Top female baby names')
+	ax.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+	ax2.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+	plt.show()
+	return fig_M, fig_F
+
+
+
 	
