@@ -67,7 +67,7 @@ def get_year_plot_trending_male_names(year):
 	fig = plt.figure()
 	ax = fig.add_axes([0.1, 0.1, 0.75, 0.75])
 	male = get_male_names(year)
-	ax.plot(male.Name[0:5], male.Count[0:5],'go-', linestyle='dashed', label=str(year))
+	ax.plot(male.Name[0:5], male.Count[0:5],'go', label=str(year))
 	ax.set_xlabel('Baby Name')
 	ax.set_ylabel('Number of name occurrences')
 	ax.set_title('Top male baby names for {}'.format(year))
@@ -79,7 +79,7 @@ def get_year_plot_trending_female_names(year):
 	fig = plt.figure()
 	ax = fig.add_axes([0.1, 0.1, 0.75, 0.75])
 	female = get_female_names(year)
-	ax.plot(female.Name[0:5], female.Count[0:5],'go-', linestyle='dashed', label=str(year))
+	ax.plot(female.Name[0:5], female.Count[0:5],'go', label=str(year))
 	ax.set_xlabel('Baby Name')
 	ax.set_ylabel('Number of name occurrences')
 	ax.set_title('Top female baby names for {}'.format(year))
@@ -100,10 +100,7 @@ def get_plot_trending_name_for_years(years):
 		ax.plot(male.Name[0:5], male.Count[0:5],'o', label=str(year))
 		
 
-		ax2.plot(female.Name[0:5], female.Count[0:5],'o', label=str(year))
-		
-
-		
+		ax2.plot(female.Name[0:5], female.Count[0:5],'o', label=str(year))	
 	ax.set_xlabel('Baby Name')
 	ax.set_ylabel('Number of name occurrences')
 	ax.set_title('Top male baby names')

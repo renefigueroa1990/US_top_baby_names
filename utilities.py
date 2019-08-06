@@ -49,7 +49,21 @@ def convert_text_to_csv():
 			new_file_name = temp_path.with_suffix('.csv')
 			os.rename(temp_path, new_file_name)
 
-#Utilities should only run once
-convert_text_to_csv()
+def user_input():
+	lower_bound = 1880
+	upper_bound = 2017
+	while True:
+		try:
+			year = int(input("Enter year between 1880 and 2017: "))
+		except ValueError:
+			print("Please enter an integer")
+			continue
+		else:
+			if lower_bound <= year <= upper_bound:
+				return year
+				break
+			else:
+				print("Year needs to be within range; try again")
+
 
 
